@@ -71,24 +71,26 @@ Now that we have access to the DOM node, we can access built in methods of the `
 
 ### Things are looking very square
 Lets now create our first image on the canvas! We will start by creating a simple square. We need to tell canvas two things in order to do this properly.
-    1. Tell canvas what type of shape, how big it should be, and *where* to render it.
-    2. What color the shape should be.
+1. Tell canvas what type of shape, how big it should be, and *where* to render it.
+2. What color the shape should be.
 
 Lets tackle the first part! In order to create a square, we need to tell the `ctx` to `fillRect(x, y, width, height)`. This is used to a rectangular shape. The `fillRect()` takes in 4 arguements:
-    1. x: The x-axis coordinate of the rectangle's starting point (a value of 0 would start the square at the left side of the canvas)
-    2. y: The y-axis coordinate of the rectangle's starting point (a value of 0 would start the square at the top of the canvas)
-    3. width: The width of the rectangle
-    4. height: The height of the rectangle
-   
+1. x: The x-axis coordinate of the rectangle's starting point (a value of 0 would start the square at the left side of the canvas)
+2. y: The y-axis coordinate of the rectangle's starting point (a value of 0 would start the square at the top of the canvas)
+3. width: The width of the rectangle
+4. height: The height of the rectangle
+
+![Canvas grid](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes/canvas_default_grid.png)
+
 This is how we can make our first square start all the way to the top left and be 50px x 50px
 ```js
     ctx.fillRect(0, 0, 50, 50);
 ```
 
-Now we just need to set the square's color! To affect the styles of a canvas drawing, we can use `fillStyle`!
+Now we just need to set the square's color! To affect the styles of a canvas drawing, we can use `fillStyle`! (**Note**: `fillStyle` *must* come before the `fillRect` in our code)
 ```js
+    ctx.fillStyle = 'rgb(200, 0, 0)';
     ctx.fillRect(0, 0, 50, 50);
-    ctx.fillStyle = 'rgb(200, 0, 0)`;
 ```
 
 Check out your `index.html`! It should look something like this.
@@ -100,7 +102,54 @@ Now lets create a second square of the same size that overlaps the first one! We
     <summary>Solution</summary>
     
 ```js
+    ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
     ctx.fillRect(20, 20, 50, 50);
-    ctx.fillStyle = `rgba(0, 0, 200, 0.5)`;
 ```
 </details>
+
+## Drawing Lines
+
+In order to draw any kind of line or path using canvas, we need to begin by calling the `beginPath()` method on the `ctx`.
+```js
+    ctx.beginPath();
+```
+
+We can specify the color of the line by setting the `strokeStyle`.
+```js
+    ctx.strokeStyle = 'blue';
+```
+
+Imagine that we are instructing someone to draw a line for us on a piece of paper. The first thing we might tell them, is where to start the line. We have to tell canvas where to *move* the pen to.
+```js
+    // First parameter is the x position
+    // Second parameter is the y position
+    ctx.moveTo(0, 80);
+```
+This is the point where canvas will start to draw from. Now, we can tell canvas to make a line!
+```js
+    // First parameter is the x position
+    // Second parameter is the y position
+    ctx.lineTo(80, 80);
+```
+The final step to actually draw the path, is to call the `stroke` method on `ctx`. All together it should look like this.
+```js
+    ctx.beginPath();
+    ctx.strokeStyle = 'blue';
+    ctx.moveTo(0, 80);
+    ctx.lineTo(80, 80);
+    ctx.stroke();
+```
+We should now have a line under our square!
+![Two square with line in canvas]()
+
+Utilizing what we learned about paths, lets add the `ctx.arc` method to draw something more unique!
+
+The arc method takes in 6 parameters:
+1. x: starting x position
+2. y: starting y position
+3. radius: the radius of the arc
+4. startAngle: the starting angle (in radians)
+5. endAngle: the ending angle (in radians)
+6. counterClockwise: boolean (false for clockwise)
+    
+![Radians in circle](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Degree-Radian_Conversion.svg/1280px-Degree-Radian_Conversion.svg.png)
