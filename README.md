@@ -166,7 +166,7 @@ Lets draw our lines for the triangle
     ctx.lineTo(290, 10);
 ```
 We should now have an outlined triangle appearing in our canvas!
-![triangle on canvas]()
+
 <img src="./images/with_triangle.png" alt="triangle on canvas" width="350" />
 
 Now lets fill change the fill style, and fill it in!
@@ -199,6 +199,7 @@ The arc method takes in 6 parameters:
 ![Radians in circle](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Degree-Radian_Conversion.svg/1280px-Degree-Radian_Conversion.svg.png)
 
 The arc function takes in angles as *radians*. One radian is the resulting angle if we take the radius and wrap it around the circle. More on radians [here](https://www.mathsisfun.com/geometry/radians.html)
+<br>
 ![Circle radians diagram](https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif)
 
 To draw a half circle, we would need end at 3.14 radians (π). For a full circle, we would end at 6.28 (2π). In js, we can use `Math.PI` for π. So to draw a half circle, our code would look something like this.
