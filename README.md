@@ -116,7 +116,7 @@ In order to draw any kind of line or path using canvas, we need to begin by call
 
 We can specify the color of the line by setting the `strokeStyle`.
 ```js
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'black';
 ```
 
 Imagine that we are instructing someone to draw a line for us on a piece of paper. The first thing we might tell them, is where to start the line. We have to tell canvas where to *move* the pen to.
@@ -134,15 +134,55 @@ This is the point where canvas will start to draw from. Now, we can tell canvas 
 The final step to actually draw the path, is to call the `stroke` method on `ctx`. All together it should look like this.
 ```js
     ctx.beginPath();
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'black';
     ctx.moveTo(0, 80);
     ctx.lineTo(80, 80);
     ctx.stroke();
 ```
-We should now have a line under our square!
-![Two square with line in canvas]()
 
-Utilizing what we learned about paths, lets add the `ctx.arc` method to draw something more unique!
+**Note**: Only one `ctx.stroke()` method is required per canvas. You can draw as many lines as your would like, and just call `ctx.stroke()` at the bottom of the file.
+
+We should now have a line under our square!
+![Two squares with line in canvas]()
+
+## Drawing Triangles
+Using what we know about lines, we can draw the outline of a triangle. Once the outline is complete, we can call the `ctx.fill()` method to color it in!
+
+Lets add a triangle to our current canvas by first beginning a new path, and moving to the point on our canvas that we want to draw from (lets use a starting point of 290, 10)
+```js
+    ctx.beginPath();
+    ctx.moveTo(290, 10);
+```
+Lets draw our lines for the triangle
+```js
+    // Right side of triangle
+    ctx.lineTo(290, 100);
+    // Left side of triangle
+    ctx.lineTo(200, 10);
+    // Top of triangle
+    ctx.lineTo(290, 10);
+```
+We should now have an outlined triangle appearing in our canvas!
+![triangle on canvas]()
+
+Now lets fill change the fill style, and fill it in!
+```js
+    ctx.fillStyle = 'green';
+    ctx.fill();
+```
+The complete code for the triangle should look like this
+```js
+    ctx.beginPath();
+    ctx.moveTo(290, 10);
+    ctx.lineTo(290, 100);
+    ctx.lineTo(200, 10);
+    ctx.lineTo(290, 10);
+    ctx.fillStyle = 'green';
+    ctx.fill();
+```
+
+## Drawing Arcs
+Lets now learn how to use the `ctx.arc` method so we can learn how to draw arcs and cirlces
 
 The arc method takes in 6 parameters:
 1. x: starting x position
@@ -153,3 +193,57 @@ The arc method takes in 6 parameters:
 6. counterClockwise: boolean (false for clockwise)
     
 ![Radians in circle](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Degree-Radian_Conversion.svg/1280px-Degree-Radian_Conversion.svg.png)
+
+The arc function takes in angles as *radians*. One radian is the resulting angle if we take the radius and wrap it around the circle. More on radians [here](https://www.mathsisfun.com/geometry/radians.html)
+![](https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif)
+
+To draw a half circle, we would need end at 3.14 radians (π). For a full circle, we would end at 6.28 (2π). In js, we can use `Math.PI` for π. So to draw a half circle, our code would look something like this.
+```js
+    // moving our pen to the start of the arc perimeter
+    ctx.moveTo(200,100);
+    ctx.arc(150, 100, 50, 0, -Math.PI, true);
+    ctx.stroke();
+```
+## Code that smiles back
+Lets utilize what he have learned to draw a smiley face! Open up the `part-two/script.js` follow along with the instructions. Open up [link for part-two live server](http://127.0.0.1:5500/part-two/index.html) if using live server!
+
+![smiley face in canvas]()
+
+<br>
+<br>
+Wait! What is up with the lines connecting my shapes??? We didn't tell canvas to pick up and move the pen! Lets use the `moveTo()` method before we create the arc! (must move to the starting point of the arcs perimeter, *not* the center of the arc)
+
+<details>
+    <summary>Solution</summary>
+    
+    ```js
+    // begin path
+    ctx.beginPath();
+
+    // Outer circle
+    // use 150, 75 as starting point
+    // use radius of 50
+    ctx.arc(150, 75, 50, 0, Math.PI * 2, true);
+
+    // Mouth (clockwise)
+    // use radius of 35
+    ctx.moveTo(185, 75);
+    ctx.arc(150, 75, 35, 0, Math.PI, false);
+
+    // Left eye
+    // use 135, 65 as starting point
+    // use radius of 5
+    ctx.moveTo(140, 65);
+    ctx.arc(135, 65, 5, 0, Math.PI * 2, true);
+
+    // Right eye
+    // use 165, 65 as starting point
+    // use radius of 5
+    ctx.moveTo(170, 65);
+    ctx.arc(165, 65, 5, 0, Math.PI * 2, true);
+
+    // call stroke method
+    ctx.stroke();
+    ```
+    
+</details>
