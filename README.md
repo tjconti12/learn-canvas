@@ -12,7 +12,8 @@ Here is an example of our empty canvas on the screen! (A black border was added 
 ```html
 <canvas id="canvas" style="border:2px solid black"></canvas>
 ```
-![Blank Canvas on screen]()
+
+<img src="./images/blank_canvas.png" alt="blank canvas on screen" width="250"/>
 
 The canvas element can also take width and height properties inside the element tag
 ```html
@@ -94,7 +95,8 @@ Now we just need to set the square's color! To affect the styles of a canvas dra
 ```
 
 Check out your `index.html`! It should look something like this.
-![square rendered on canvas]()
+
+<img src="./images/square_canvas.png" alt="square rendered on canvas" width="350" />
 
 Now lets create a second square of the same size that overlaps the first one! We can create a square with a style of `rgba(0, 0, 200, 0.5)` and place it 20px away from the top, and 20px away from the left.
 
@@ -143,7 +145,8 @@ The final step to actually draw the path, is to call the `stroke` method on `ctx
 **Note**: Only one `ctx.stroke()` method is required per canvas. You can draw as many lines as your would like, and just call `ctx.stroke()` at the bottom of the file.
 
 We should now have a line under our square!
-![Two squares with line in canvas]()
+
+<img src="./images/with_line.png" alt="Two squares with line in canvas" width="350" />
 
 ## Drawing Triangles
 Using what we know about lines, we can draw the outline of a triangle. Once the outline is complete, we can call the `ctx.fill()` method to color it in!
@@ -164,6 +167,7 @@ Lets draw our lines for the triangle
 ```
 We should now have an outlined triangle appearing in our canvas!
 ![triangle on canvas]()
+<img src="./images/with_triangle.png" alt="triangle on canvas" width="350" />
 
 Now lets fill change the fill style, and fill it in!
 ```js
@@ -195,7 +199,7 @@ The arc method takes in 6 parameters:
 ![Radians in circle](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Degree-Radian_Conversion.svg/1280px-Degree-Radian_Conversion.svg.png)
 
 The arc function takes in angles as *radians*. One radian is the resulting angle if we take the radius and wrap it around the circle. More on radians [here](https://www.mathsisfun.com/geometry/radians.html)
-![](https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif)
+![Circle radians diagram](https://upload.wikimedia.org/wikipedia/commons/4/4e/Circle_radians.gif)
 
 To draw a half circle, we would need end at 3.14 radians (π). For a full circle, we would end at 6.28 (2π). In js, we can use `Math.PI` for π. So to draw a half circle, our code would look something like this.
 ```js
@@ -207,7 +211,7 @@ To draw a half circle, we would need end at 3.14 radians (π). For a full circle
 ## Code that smiles back
 Lets utilize what he have learned to draw a smiley face! Open up the `part-two/script.js` follow along with the instructions. Open up [link for part-two live server](http://127.0.0.1:5500/part-two/index.html) if using live server!
 
-![smiley face in canvas]()
+<img src="./images/smiley_face.png" alt="smiley face on canvas" width="350" />
 
 <br>
 <br>
