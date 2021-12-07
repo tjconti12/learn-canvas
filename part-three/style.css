@@ -1,0 +1,7 @@
+.canvas {
+	position: absolute;
+}
+
+#game_display {
+	z-index: 1000;
+}
