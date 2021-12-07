@@ -9,7 +9,6 @@
 // Step 4: Create a function called draw that takes in ctx as a parameter
 
 
-
 // Step 5: Using what you learned, inside of the draw function, instruct canvas to render a square. Use any size and fill style you like!
 
 // Step 6: Now we have a square! Lets get it to move! Replace the x and y parameters in the fillRect() function with the variables xPosition and yPosition (For the first parameter, use xPosition, For the second parameter, use yPosition)

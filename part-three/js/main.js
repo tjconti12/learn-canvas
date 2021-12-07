@@ -1,12 +1,8 @@
-// const canvas = document.querySelector('#game_display');
-// const ctx = canvas.getContext('2d');
+
 const width = typeof canvas !== 'undefined' ? canvas.width : 900;
 const height = typeof canvas !== 'undefined' ? canvas.height : 504;
 
-// const backgroundCanvas = document.querySelector('#game_background');
-// const backgroundctx = backgroundCanvas.getContext('2d');
-// const backgroundWidth = (backgroundCanvas.width = 900);
-// const backgroundHeight = (backgroundCanvas.height = 480);
+const backgroundImg = document.querySelector('.map-background');
 
 // Global variables
 const gameHeight = height;
@@ -26,8 +22,8 @@ let oldPositionDelay = 0; // Adding a delay to updating old position to decrease
 // let collisionMapRows = 16;
 
 // Background Images
-let backgroundImage = new Image();
-backgroundImage.src = '';
+let canvasBackground = new Image();
+canvasBackground.src = '../images/sky1.png';
 
 // Friction
 const friction = () => {

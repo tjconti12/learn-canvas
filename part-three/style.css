@@ -5,3 +5,13 @@
 #game_display {
 	z-index: 1000;
 }
+
+#game_background {
+	margin-top: 2px;
+}
+
+.map-background {
+	width: 902px;
+	height: 480px;
+	overflow: hidden;
+}

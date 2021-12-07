@@ -35,7 +35,7 @@ function level() {
 				let tileVal = gameMap[mapIndex];
 				if (tileVal != 0) {
 					tileVal -= 1;
-					sourceY = Math.floor(tileVal / atlasCol) * tileSize;
+					sourceY = Math.floor(tileVal / atlasCol) * tileSize + 0.5;
 					sourceX = (tileVal % atlasCol) * tileSize;
 					backgroundctx.drawImage(
 						tileAtlas,
@@ -53,7 +53,13 @@ function level() {
 				mapIndex++;
 			}
 		}
+		drawBackground();
 	}
+
+	function drawBackground() {
+		backgroundImg.appendChild(canvasBackground)
+	}
+
 
     collsionMapCols = 30;
     collisionMapRows = 16;
