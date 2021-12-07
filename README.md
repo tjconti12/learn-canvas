@@ -64,6 +64,13 @@ In order to access the 2D rendering context, we need to first grab the canvas DO
 ```js
     const canvas = document.querySelector('#canvas');
 ```
+
+*Note*: You can now resize the canvas using JavaScript if needed.
+```js
+    canvas.width = 300;
+    canvas.height = 150;
+```
+
 Now that we have access to the DOM node, we can access built in methods of the `<canvas>` element. We want to grab the rendering context and set it to a variable (ctx is used by convention). We will pass in `2d` as the only parameter to ensure we grab the 2d rendering context.
 ```js
     const canvas = document.querySelector('#canvas');
@@ -221,34 +228,153 @@ Wait! What is up with the lines connecting my shapes??? We didn't tell canvas to
 <details>
     <summary>Solution</summary>
     
-    ```js
-    // begin path
-    ctx.beginPath();
+```js
+// begin path
+ctx.beginPath();
 
-    // Outer circle
-    // use 150, 75 as starting point
-    // use radius of 50
-    ctx.arc(150, 75, 50, 0, Math.PI * 2, true);
+// Outer circle
+// use 150, 75 as starting point
+// use radius of 50
+ctx.arc(150, 75, 50, 0, Math.PI * 2, true);
 
-    // Mouth (clockwise)
-    // use radius of 35
-    ctx.moveTo(185, 75);
-    ctx.arc(150, 75, 35, 0, Math.PI, false);
+// Mouth (clockwise)
+// use radius of 35
+ctx.moveTo(185, 75);
+ctx.arc(150, 75, 35, 0, Math.PI, false);
 
-    // Left eye
-    // use 135, 65 as starting point
-    // use radius of 5
-    ctx.moveTo(140, 65);
-    ctx.arc(135, 65, 5, 0, Math.PI * 2, true);
+// Left eye
+// use 135, 65 as starting point
+// use radius of 5
+ctx.moveTo(140, 65);
+ctx.arc(135, 65, 5, 0, Math.PI * 2, true);
 
-    // Right eye
-    // use 165, 65 as starting point
-    // use radius of 5
-    ctx.moveTo(170, 65);
-    ctx.arc(165, 65, 5, 0, Math.PI * 2, true);
+// Right eye
+// use 165, 65 as starting point
+// use radius of 5
+ctx.moveTo(170, 65);
+ctx.arc(165, 65, 5, 0, Math.PI * 2, true);
 
-    // call stroke method
-    ctx.stroke();
-    ```
+// call stroke method
+ctx.stroke();
+```
+    
+</details>
+
+## Cube Crusher
+Lets demonstrate how powerful `<canvas>` can be! Open up the `part-three/challenge.js` and follow along with the instructions. Open up [link for part-three live server](http://127.0.0.1:5500/part-three/index.html) if using live server! **Do not edit anything inside of the `/js` or `/maps` folders**
+
+**Inside of `challenge.js`**
+
+1. Lets grab the canvas html element with an id `game_display` and save it to a variable called `canvas`.
+<details>
+    <summary>Solution</summary>
+    
+```js
+const canvas = document.querySelector('#game_display');
+```
+    
+</details>
+
+2. Now get the canvas rendering context and set it to a variable called `ctx`.
+<details>
+    <summary>Solution</summary>
+    
+```js
+const ctx = canvas.getContext('2d');
+```
+    
+</details>
+
+3. Set the canvas width to 900 and the height to 490.
+<details>
+    <summary>Solution</summary>
+    
+```js
+canvas.width = 900;
+canvas.height = 490;
+```
+    
+</details>
+
+4. Create a function called `draw` that takes in `ctx` as a parameter.
+<details>
+    <summary>Solution</summary>
+    
+```js
+function draw(ctx) {
+
+}
+```
+    
+</details>
+
+5. Inside of the `draw` function, lets use canvas to render a square! It can have any starting position, any size, and any color you like!
+<details>
+    <summary>Solution</summary>
+    
+```js
+function draw(ctx) {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(20, 20, 50, 50);
+}
+```
+    
+</details>
+
+6. Now that we have our square on the screen, wouldn't it be cool if we could move it? Lets do it! Replace the x and y position parameters in `fillRect()` with the variables `xPosition` and `yPosition`.
+<details>
+    <summary>Solution</summary>
+    
+```js
+function draw(ctx) {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(xPosition, yPosition, 50, 50);
+}
+```
+    
+</details>
+
+7. Lets work with another canvas to create a background for our square to move through! But first, lets resize our square to ensure that it fits in the background. Set its width and height to be 20x20.
+<details>
+    <summary>Solution</summary>
+    
+```js
+function draw(ctx) {
+    ctx.fillStyle = 'red';
+    ctx.fillRect(xPosition, yPosition, 20, 20);
+}
+```
+    
+</details>
+
+8. Now grab the `<canvas>` with an id `game_background` and save it to a variable called `backgroundCanvas`.
+<details>
+    <summary>Solution</summary>
+    
+```js
+    const backgroundCanvas = document.querySelector('#game_background');
+```
+    
+</details>
+
+9. Get the canvas rendering context and save it to a variable called `backgroundctx`.
+<details>
+    <summary>Solution</summary>
+    
+```js
+    const backgroundctx = backgroundCanvas.getContext('2d');
+```
+    
+</details>
+
+10. Finally, set the `backgroundCanvas` width to 900 and the height to 480.
+<details>
+    <summary>Solution</summary>
+    <br>
+    
+```js
+    backgroundCanvas.width = 900;
+    backgroundCanvas.height = 480;
+```
     
 </details>
