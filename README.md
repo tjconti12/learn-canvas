@@ -274,6 +274,7 @@ const canvas = document.querySelector('#game_display');
 ```
     
 </details>
+
 2. Now get the canvas rendering context and set it to a variable called `ctx`.
 <details>
     <summary>Solution</summary>
@@ -283,6 +284,7 @@ const ctx = canvas.getContext('2d');
 ```
     
 </details>
+
 3. Set the canvas width to 900 and the height to 490.
 <details>
     <summary>Solution</summary>
@@ -293,6 +295,7 @@ canvas.height = 490;
 ```
     
 </details>
+
 4. Create a function called `draw` that takes in `ctx` as a parameter.
 <details>
     <summary>Solution</summary>
@@ -304,6 +307,7 @@ function draw(ctx) {
 ```
     
 </details>
+
 5. Inside of the `draw` function, lets use canvas to render a square! It can have any starting position, any size, and any color you like!
 <details>
     <summary>Solution</summary>
@@ -316,6 +320,7 @@ function draw(ctx) {
 ```
     
 </details>
+
 6. Now that we have our square on the screen, wouldn't it be cool if we could move it? Lets do it! Replace the x and y position parameters in `fillRect()` with the variables `xPosition` and `yPosition`.
 <details>
     <summary>Solution</summary>
@@ -328,6 +333,7 @@ function draw(ctx) {
 ```
     
 </details>
+
 7. Lets work with another canvas to create a background for our square to move through! But first, lets resize our square to ensure that it fits in the background. Set its width and height to be 20x20.
 <details>
     <summary>Solution</summary>
@@ -340,6 +346,7 @@ function draw(ctx) {
 ```
     
 </details>
+
 8. Now grab the `<canvas>` with an id `game_background` and save it to a variable called `backgroundCanvas`.
 <details>
     <summary>Solution</summary>
@@ -349,6 +356,7 @@ function draw(ctx) {
 ```
     
 </details>
+
 9. Get the canvas rendering context and save it to a variable called `backgroundctx`.
 <details>
     <summary>Solution</summary>
@@ -358,6 +366,7 @@ function draw(ctx) {
 ```
     
 </details>
+
 10. Finally, set the `backgroundCanvas` width to 900 and the height to 480.
 <details>
     <summary>Solution</summary>
